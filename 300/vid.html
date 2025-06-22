@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>300 clicks=sorpresa</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    #contador {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      cursor: pointer;
+      background: #00ff99;
+      border: none;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #00cc7a;
+    }
+
+    video {
+      width: 300px;
+      margin: 10px;
+      border: 2px solid #fff;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Haz clic 300 veces para desbloquear los videos</h1>
+  <div id="contador">Clics: 0</div>
+  <button id="clicker">¡Haz clic!</button>
+
+  <div class="grid" id="contenedor"></div>
+
+  <script>
+    let clicks = 0;
+    let videoIndex = 1;
+    const maxVideos = 300;
+    const contador = document.getElementById("contador");
+    const contenedor = document.getElementById("contenedor");
+    const btn = document.getElementById("clicker");
+
+    btn.addEventListener("click", () => {
+      clicks++;
+      contador.textContent = `Clics: ${clicks}`;
+
+      if (clicks === 300) {
+        btn.disabled = true;
+        btn.textContent = "¡Comienza la reproducción!";
+        comenzarCargaVideos();
+      }
+    });
+
+    function comenzarCargaVideos() {
+      mostrarBloque(); // Cargar el primer bloque
+    }
+
+    function mostrarBloque() {
+      for (let i = 0; i < 3 && videoIndex <= maxVideos; i++, videoIndex++) {
+        const video = document.createElement("video");
+        video.src = `tro.mp4`; // asegúrate de que existan estos archivos
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = false;
+        video.playsInline = true;
+        contenedor.appendChild(video);
+      }
+
+      if (videoIndex <= maxVideos) {
+        setTimeout(mostrarBloque, 3000); // siguiente bloque en 3 segundos
+      }
+    }
+  </script>
+
+</body>
+</html>

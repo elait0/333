@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>japi verdei</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    video {
+      margin-top: 2rem;
+      width: 560px;
+      max-width: 90%;
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+    #volver {
+      display: none;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>felicidades! llegaste casi al final,solo tenes que poner cuando es mi cumpleaños</h1>
+
+  <label for="dia">Día:</label>
+  <input type="number" id="dia" placeholder="1" min="1" max="31">
+  <label for="mes">Mes:</label>
+  <input type="number" id="mes" placeholder="2" min="1" max="12">
+  <button onclick="verificarFecha()">Verificar</button>
+
+  <div id="resultado"></div>
+  <div id="video-container"></div>
+
+  <div id="volver">
+    <button onclick="volverAlInicio()">Volver al inicio</button>
+  </div>
+
+  <script>
+    function verificarFecha() {
+      const dia = parseInt(document.getElementById('dia').value);
+      const mes = parseInt(document.getElementById('mes').value);
+      const resultado = document.getElementById('resultado');
+      const videoContainer = document.getElementById('video-container');
+      const volver = document.getElementById('volver');
+
+      resultado.innerHTML = '';
+      videoContainer.innerHTML = '';
+      volver.style.display = 'none';
+
+      if (dia === 1 && mes === 2) {
+        resultado.innerHTML = '<p>felicidades,ganaste 1000 pesos. apreta el boton para retirar tu premio...</p>';
+        videoContainer.innerHTML = `
+          <video controls autoplay>
+            <source src="wow.mp4" type="video/mp4">
+            xd 
+          </video>
+        `;
+        volver.style.display = 'block';
+      } else {
+        resultado.innerHTML = '<p>como no vas a saber cuando es cumpleaños? sos re gil...</p>';
+        videoContainer.innerHTML = `
+          <video controls autoplay>
+            <source src="triste.mp4" type="video/mp4">
+            xd
+          </video>
+        `;
+      }
+    }
+
+    function volverAlInicio() {
+      window.location.href = "index.html?musica=true";
+    }
+  </script>
+</body>
+</html>

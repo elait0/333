@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sabés la historia de Black?</title>
+  <style>
+    body {
+      background: #111827;
+      color: #f9fafb;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #a78bfa;
+    }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      border: 3px solid #a78bfa;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #d1d5db;
+    }
+
+    input[type="text"] {
+      padding: 0.75rem;
+      width: 80%;
+      max-width: 500px;
+      border: 2px solid #6d28d9;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    #mensaje {
+      margin-top: 1rem;
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background: #6366f1;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>La historia de Black el Empalador</h1>
+
+  <img src="vlad.jpg" alt="Black el Empalador">
+
+  <p>aca podes ganarte los 1000 pesos facilmente. solamente tenes que poner la fecha,el mes y el año en que black
+    el nacio y murio,pero ojo,tenes que poner unas palabras especificas.
+  </p>
+
+  <input type="text" id="entrada" placeholder="Escribí las fechas exactas..." oninput="verificarFrase()">
+
+  <div id="mensaje"></div>
+  <a href="index.html" id="btnVolver" class="btn">Volver al inicio</a>
+
+  <script>
+    function verificarFrase() {
+      const entrada = document.getElementById('entrada').value.trim().toLowerCase();
+      const correcto = "vlad nacio el dos del once de mil cuatrocientos treita y uno. y murio el diez del primero de mil cuatrocientos setenta y siete";
+
+      const btn = document.getElementById("btnVolver");
+      const mensaje = document.getElementById("mensaje");
+
+      if (entrada === correcto) {
+        window.location.href = "secreto.html"; // redirige si acierta
+      } else {
+        mensaje.textContent = "❌ nao nao.";
+        btn.style.display = "inline-block";
+      }
+    }
+  </script>
+</body>
+</html>

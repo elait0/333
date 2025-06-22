@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>homla</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    #botonMover {
+      background-color: green;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    #botonFinal {
+      display: none;
+      margin-top: 20px;
+      background-color: #00ccff;
+      color: black;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>si apretas el boton,ganas. facil,no?</h1>
+  <button id="botonMover">ola soy boton</button>
+  <br><br>
+  <a href="index.html"><button id="botonFinal">sos un fracasadode mrd</button></a>
+
+  <script>
+    const boton = document.getElementById("botonMover");
+    const botonFinal = document.getElementById("botonFinal");
+    let contador = 0;
+
+    boton.addEventListener("click", () => {
+      contador++;
+
+      // Movimiento aleatorio
+      const maxX = window.innerWidth - boton.offsetWidth;
+      const maxY = window.innerHeight - boton.offsetHeight;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      boton.style.left = randomX + "px";
+      boton.style.top = randomY + "px";
+
+      // Mostrar el segundo botón
+      if (contador >= 20) {
+        botonFinal.style.display = "inline-block";
+      }
+    });
+  </script>
+
+</body>
+</html>
